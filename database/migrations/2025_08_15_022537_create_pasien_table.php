@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('pasien', function (Blueprint $table) {
             $table->id();
-            $table->string('nik', 20)->unique();
-            $table->string('nama');
+            $table->string('no_rm')->unique();
+            $table->string('nik', 16)->nullable();
+            $table->string('nama', 150);
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->text('alamat')->nullable();
-            $table->string('no_hp', 15)->nullable();
+            $table->string('no_hp', 12)->nullable();
             $table->timestamps();
         });
     }
