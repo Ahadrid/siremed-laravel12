@@ -47,4 +47,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function kunjungan ()
+    {
+        return $this->hasMany(Kunjungan::class, 'dokter_id');
+    } 
+
+    public function rekamMedis ()
+    {
+        return $this->hasMany(RekamMedis::class, 'dokter_id');
+    }
+
+    public function auditLog () 
+    {
+        return $this->hasMany(AuditLogs::class);
+    }
+
+    public function isDokter ()
+    {
+        return $this->role === 'dokter';
+    }
 }
